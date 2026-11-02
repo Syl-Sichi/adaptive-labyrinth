@@ -64,7 +64,27 @@ The system treats the Minotaur as an adversarial agent trying to maximize surviv
 
 ---
 
-## 4. The Kill Zone (Center)
+## 4. Three-Wall Communication Severance (Critical Rule)
+
+Hackers and advanced malware frequently use early-stage tools and beacons to map the target environment’s layout, architecture, trust relationships, and defenses. Allowing continued external communication after meaningful progress into the Labyrinth dramatically increases the attacker’s advantage.
+
+**Rule:**  
+After an Active Minotaur has crossed or meaningfully interacted with **three walls** (or equivalent depth layers), the Labyrinth **severs all external communication channels** available to that Minotaur.
+
+### Details
+- “Crossing a wall” includes successful traversal of a defensive boundary, privilege domain, network segment, or security control that the Topology Engine counts as a distinct layer.
+- Once the third wall is crossed:
+  - Outbound connections (C2, exfiltration, beaconing, mapping data) are blocked or redirected into sinkholes.
+  - Inbound command channels are severed.
+  - The Minotaur may still move *inside* the Labyrinth, but it can no longer phone home or receive new instructions.
+- This rule activates automatically and with high priority. It is one of the strongest early containment actions the Labyrinth can take.
+- Exceptions require explicit high-confidence override by a human operator.
+
+This turns the Labyrinth into a one-way trap: the deeper the Minotaur goes, the more isolated it becomes from its operators.
+
+---
+
+## 5. The Kill Zone (Center)
 
 When the Minotaur is forced into the designated Center node(s):
 
@@ -81,7 +101,7 @@ Only after confirmation does the Labyrinth begin to relax the surrounding topolo
 
 ---
 
-## 5. Rules of Adaptation (Evolution Loop)
+## 6. Rules of Adaptation (Evolution Loop)
 
 After every engagement (successful or failed):
 
@@ -98,12 +118,13 @@ Over time the Labyrinth develops specialized responses for different classes of 
 
 ---
 
-## 6. Hard Constraints
+## 7. Hard Constraints
 
 - Legitimate traffic and processes must never be permanently trapped or destroyed.
 - The system must always retain a way to reverse temporary restrictions on trusted entities.
 - Human operators must be able to observe, pause, or override the Labyrinth at any time.
 - All destructive actions in the Kill Zone require high-confidence classification.
+- The Three-Wall Communication Severance rule may only be overridden by explicit human action.
 
 ---
 
